@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>九九乘法表</title>
+	<meta charset="utf-8"/>
+	<script type="text/javascript">
+		document.write('<table border="1px" cellpadding="20px">')
+		for(var i=1;i<=9;++i){
+			document.write('<tr>');
+			for(var j=1;j<=i;++j){
+				var k;
+				k=j*i;
+				document.write('<td>'+j+"x"+i+"="+k+'</td>');
+			}
+			document.write('</tr>');
+		}
+		document.write('</table>');
+	</script>
+</head>
+<body>
+</body>
+</html>
