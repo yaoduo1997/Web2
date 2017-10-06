@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>循环语句</title>
+	<script type="text/javascript">
+		//输出表格标签
+		document.write('<table border="1px" cellpadding="20px">');
+		for(var i=1;i<=4;++i){
+			//输出<tr>标签
+			document.write('<tr>');
+			//依次输出4个单元格
+			for(var j=1;j<=4;++j){
+				document.write('<td>&nbsp;</td>');
+			}
+			//输出结束的</tr>标签
+			document.write('</tr>');
+		}
+		document.write('</table>');
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		document.write('<table border=1px cellpadding="20px">');
+		var m=1;
+		while(m<=4){
+			m+=1;
+			document.write('<tr>');
+			var n=1;
+			while(n<=4){
+				n+=1;
+				document.write('<td>&nbsp;</td>');
+			}
+			document.write('</tr>');
+		}
+		document.write('</table>');
+	</script>
+</body>
+</html>
