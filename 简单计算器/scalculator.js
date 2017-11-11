@@ -85,9 +85,9 @@ function CalculateResult(){
 				break;
 			}
 		}
-		//计算结果
-		end = eval(str);
-		document.getElementById('result').innerHTML=String(end);
-		arr=[end];
 	}
+	//计算结果
+	end = eval(str);
+	document.getElementById('result').innerHTML=String(end);
+	arr=[end];
 }
