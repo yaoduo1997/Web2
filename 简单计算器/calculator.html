@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = "utf-8"/>
+	<title>简单的计算器</title>
+	<link rel="stylesheet" type="text/css" href="fcalculator.css"/>
+	<script type="text/javascript" src="scalculator.js"></script>
+</head>
+<body>
+	<div id="outside">
+		<form>
+		<table id="whole" border="2" cellspacing="5">
+			<tr>
+				<td colspan="3"><textarea id="result"></textarea></td>
+				<td><input type="button" value="C" class="btu" name="0" onclick="show15(this)"/></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="1" class="btu" name="1" onclick="show1()"/></td>
+				<td><input type="button" value="2" class="btu" name="2" onclick="show2()"/></td>
+				<td><input type="button" value="3" class="btu" name="3" onclick="show3()"/></td>
+				<td><input type="button" value="+" class="btu" name="4" onclick="show10()"/></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="4" class="btu" name="5" onclick="show4()"/></td>
+				<td><input type="button" value="5" class="btu" name="6" onclick="show5()"/></td>
+				<td><input type="button" value="6" class="btu" name="7" onclick="show6()"/></td>
+				<td><input type="button" value="-" class="btu" name="8" onclick="show11()"/></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="7" class="btu" name="9" onclick="show7()"/></td>
+				<td><input type="button" value="8" class="btu" name="10" onclick="show8()"/></td>
+				<td><input type="button" value="9" class="btu" name="11" onclick="show9()"/></td>
+				<td><input type="button" value="*" class="btu" name="12" onclick="show12()"/></td>
+			</tr>
+			<tr>
+				<td><input type="button" value="0" class="btu" name="13" onclick="show0()"/></td>
+				<td><input type="button" value="." class="btu" name="14" onclick="show13()"/></td>
+				<td><input type="button" value="=" class="btu" name="=" onclick="CalculateResult()"/></td>
+				<td><input type="button" value="/" class="btu" name="/" onclick="show14()"/></td>
+			</tr>
+		</table>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+*{
+	margin:0 auto;
+}
+#outside{
+	margin-top: 50px; 
+	height: 710px;
+	width: 710px;
+	text-align: center;
+}
+form{
+	width: 700px;
+	height: 700px;
+	text-align: center;
+}
+#whole{
+	width: 510px;
+	height: 630px;
+	text-align: center;
+	border-color: #CDCDC1;
+}
+#whole tr{
+	width: 500px;
+	height: 125px;
+}
+#whole tr td{
+	width: 125px;
+	height: 125px;
+	text-align: center;
+}
+.btu{
+	width:100px;
+	height:100px;
+	font-size:25px;
+	border-style:solid;
+	border-width:2px;
+	border-color:grey;
+}
+.btu:hover{
+	background-color: #BFEFFF;
+}
+#result{
+	height: 120px;
+	line-height: 120px;
+	width: 360px;
+	font-size: 25px;
+	color: #000000;
+	font-weight: bolder;
+	text-align: right;
+	border: none;
+}
