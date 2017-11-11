@@ -85,4 +85,5 @@ function CalculateResult(){
 	//计算结果
 	end = eval(str);
 	document.getElementById('result').innerHTML=String(end);
+	arr.length=0;
 }
