@@ -88,6 +88,10 @@ function CalculateResult(){
 	}
 	//计算结果
 	end = eval(str);
+	//如果结果为小数，就保留2位小数
+	if(String(end).indexOf('.')!=-1){
+		end = (parseInt(end*100))/100;
+	}
 	document.getElementById('result').innerHTML=String(end);
 	arr=[end];
 }
