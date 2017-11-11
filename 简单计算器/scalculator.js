@@ -1,7 +1,8 @@
 //用数组来存放参与运算的数
 var arr=[];
-//显示书写数据
+//用来获取点击数据的途径
 var btu = document.getElementsByTagName("input");
+//显示常规数字
 function show0(){	
 	arr[arr.length]=btu[13].value;
 	document.getElementById('result').innerHTML=arr.join('');
@@ -42,6 +43,7 @@ function show9(){
 	arr[arr.length]=btu[11].value;
 	document.getElementById('result').innerHTML=arr.join('');
 }
+//显示运算符号
 function show10(){	
 	arr[arr.length]=btu[4].value;
 	document.getElementById('result').innerHTML=arr.join('');
@@ -62,14 +64,13 @@ function show14(){
 	arr[arr.length]=btu[16].value;
 	document.getElementById('result').innerHTML=arr.join('');
 }
+//C的清除效果
 function show15(){	
 	document.getElementById('result').innerHTML=' ';
+	arr=[];
 }
-//特殊的运算符号具有特殊的功能,区分并计算求出结果
+//计算结果
 function CalculateResult(){
-	var arr1=[]; //存放数的
-	var arr2=[]; //存放符号的
-	var m; //用来记录小数点的
 	var end;//用来存放结果的
 	var str = arr.join('');
 	var str0 ="+-*/.";
@@ -77,13 +78,16 @@ function CalculateResult(){
 	if(str[0]=='+' || str[0]=='-' || str[0]=='*' || str[0]=='/' || str[0]=='.'){
 		document.getElementById('result').innerHTML=String("输入格式错误，请重新输入！");
 	}
-	for(var k=0;k<arr.length;k++){
-		if(str0.indexOf(String(arr[k]))==-1 && str0.indexOf(String(arr[k+1]))==-1){
-			document.getElementById('result').innerHTML=String("输入格式错误，请重新输入！");
+	else{
+		for(var k=0;k<arr.length;k++){
+			if(str0.indexOf(str[k])==-1 && str0.indexOf(str[k+1])==-1){
+				document.getElementById('result').innerHTML=String("输入格式错误，请重新输入！");
+				break;
+			}
 		}
+		//计算结果
+		end = eval(str);
+		document.getElementById('result').innerHTML=String(end);
+		arr=[end];
 	}
-	//计算结果
-	end = eval(str);
-	document.getElementById('result').innerHTML=String(end);
-	arr.length=0;
 }
