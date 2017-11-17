@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>公告文字滚动效果</title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			body{
+				background: #E0EEEE;
+			}
+			img{
+				 width: 38px;
+				 height: 38px;
+				 float: left;
+				 margin-left: 18px;
+			}
+		</style>
+		<script type="text/javascript">
+			var i=0;
+			var mov,mov1;
+			var timer;
+			window.onload = function(){
+					mov = document.getElementById('box');
+					mov1 = document.getElementById('box1');
+					if(parseInt(mov1.style.width)<=1060){
+						timer = setInterval(function(){
+							mov.style.left = parseInt(mov.style.left) - 1 +'px';
+							mov1.style.left = parseInt(mov1.style.left) - 1 +'px';
+							mov1.style.width = parseInt(mov1.style.width) + 1 +'px';
+							if(parseInt(mov1.style.width)==1060){
+								mov.style.left = 1060 + 'px';
+								mov.style.width = 0 + 'px';
+								var  tem = mov;
+								mov = mov1;
+								mov1 = tem;
+							}
+						},30);
+					}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box" style="background-color: red;position: absolute;top: 250px;left: 0px;width: 1060px;height: 50px;line-height: 50px;position: p;left: 0px;text-align: center;color: #FFFFFF;float: left;overflow: hidden;"><img src="img/megafono.png" />生命在于运动，健康勤于漱洗，快乐源于心情。早冻晚冻多运动，以动制冻；早洗晚洗天天喜，杀菌除疾。祝流感甲流躲着你，事事如意！</div>
+		<div id="box1" style="background-color: red;width: 0px;height: 50px;line-height: 50px;position: absolute;top: 250px;left: 1060px;text-align: center;color: #FFFFFF;float: left;overflow: hidden;"><img src="img/megafono.png" />生命在于运动，健康勤于漱洗，快乐源于心情。早冻晚冻多运动，以动制冻；早洗晚洗天天喜，杀菌除疾。祝流感甲流躲着你，事事如意！</div>
+	</body>
+</html>
