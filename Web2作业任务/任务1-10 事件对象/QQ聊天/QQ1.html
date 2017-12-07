@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>QQ聊天</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		ul,ol,li{
+			list-style: none;
+		}
+		.clearFix:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		#wrap{
+			width: 678px;
+			height: 615px;
+			margin: 10px auto;
+			border: 1px solid #000; 
+			background-color: #f8f7f4;
+			position: relative;
+		}
+		/*顶部样式*/
+		.header{
+			height: 50px;
+		}
+		.header>span{
+			float: left;
+			margin: 20px 0 0 12px;
+			line-height: 30px;
+		}
+		.headImg{
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			background: url(img/head.jpg) center center;
+			background-size: cover;
+		}
+		/*导航样式*/
+		.nav{
+			height: 40px;
+			line-height: 37px;
+			border-bottom: 1px solid #e2e1df;
+		}
+		.nav>li{
+			float: left;
+			margin: 0 8px;
+			padding: 0 4px;
+			cursor: default;
+			color: #767676;
+		}
+		.nav>li:last-child:after{
+			content: "▼";
+			font-size: 10px;
+			margin-left: 5px;
+		}
+		.nav>li:hover{
+			color: #000;
+		}
+		.nav>.active{
+			color: #000;
+			border-bottom: 3px solid #009bdb;
+		}
+		/*底部主体样式*/
+		.footer>div{
+			float: left;
+		}
+		.notice{
+			width: 200px;
+			height: 525px;
+			border-left: 1px solid #e2e1df;
+
+		}
+		/*消息框样式*/
+		.talk{
+			width: 476px;
+		}
+		.talkMsg{
+			width: 476px;
+			height: 400px;
+			overflow-y: auto;
+			border-bottom: 1px solid #e2e1df;
+		}
+		.time{
+			text-align: center;
+			color: #808080;
+			font-size: 10px;
+			line-height: 30px;
+		}
+		.talkInp{
+			height: 124px;
+		}
+		.myHead{
+			float: right;
+			margin-right: 12px;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			background: url(img/myHead.jpg) center center;
+			background-size: cover;
+		}
+		.content{
+			float: right;
+		}
+		.conText{
+			padding: 10px;
+			max-width: 380px;
+			line-height: 22px;
+			border-radius: 8px;
+			margin-right: 10px;
+			font-size: 12px;
+			float: left;
+			background-color: #dfdddb;
+		}
+		.area{
+			width: 456px;
+			padding: 5px 10px;
+			height: 50px;
+			resize: none;
+			outline: none;
+			border: none;
+			background-color: #f8f7f4;
+		}
+		.btn{
+			float: right;
+		}
+		.btn li{
+			font-weight: bold;
+			cursor: default;
+			display: block;
+			float: left;
+			height: 24px;
+			line-height: 24px;
+			padding: 0 16px;
+			margin-right: 12px;
+			border-radius: 4px;
+			font-size: 12px;
+			background-color: #dbd1be;
+		}
+		.send{
+			position: relative;
+		}
+		.send:after{
+			content: "▼";
+			color: #6e695f;
+			margin-left: 15px;
+		}
+		.warning{
+			width: 150px;
+			height: 50px;
+			border: 1px solid lightblue;
+			border-radius: 8px;
+			padding: 0 5px;
+			position: absolute;
+			left: -70px;
+			top: -55px;
+			display: none;
+		}
+		/*右键样式*/
+		#youji{
+			width: 132px;
+			height: 148px;
+			border: 1px #b6b3b2 solid;
+			margin: 0 auto;
+			background-color: #ffffff;
+			display: none;
+			margin-right: 0px;
+			margin-left: 0px;
+			position: absolute;
+			z-index: 1;
+			margin-top: 0px;
+			margin-left: 0px;
+		}
+		#rightclick{
+			width: 132px;
+			height: 148px;
+			position: absolute;
+			z-index: 1;
+		}
+		#rightclick li{
+			display: block;
+			height: 24px;
+			line-height: 24px;
+		}
+		#rightclick li a{
+			margin-left: 29px;
+		}
+		#rightclick li:hover{
+			background-color: #009bdb;
+		}
+		#rightclick li.subMenuShow div{
+			display: block;
+			position: absolute;
+			z-index: 2;
+			left: 132px;
+			top: -50px;
+		}
+		#duoxuan:after{
+			content: "▼";
+			color: #6e695f;
+			margin-left: 16px;
+		}
+		.xiahuaxian{
+			border-bottom: 1px  #6e695f solid;
+		}
+		#hid{
+			display: none;
+			width: 104px;
+			height: 198px;
+			border: 1px #b6b3b2 solid;
+			margin: 0 auto;
+			background-color: #ffffff;
+		}
+		#hidl{
+			width: 104px;
+			height: 198px;
+			position: absolute;
+			z-index: 2;
+		}
+		#hidl li{
+			display: block;
+			height: 28px;
+			line-height: 28px;
+		}
+		#hidl li a{
+			margin-left: 50px;
+		}
+		#hidl li:hover{
+			background-color: #009bdb;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div class="header">
+			<span class="headImg"></span>
+			<span>三四班一家亲</span>
+		</div>
+		<ul class="nav">
+			<li class="active">聊天</li>
+			<li>公告</li>
+			<li>相册</li>
+			<li>文件</li>
+			<li>活动</li>
+			<li>设置</li>
+		</ul>
+		<div class="footer">
+			<div class="talk">
+				<div class="talkMsg">
+					<ul id="msgBox">
+						<li class="clearFix">
+							<p class="time">2017/10/12 16:59:32</p>
+							<p class="content">
+								<span class="conText">好好学习</span>
+								<span class="myHead"></span>
+							</p>
+						</li>
+						<li class="clearFix">
+							<p class="time">2017/10/12 16:59:32</p>
+							<p class="content">
+								<span class="conText">天天向上</span>
+								<span class="myHead"></span>
+							</p>
+						</li>
+					</ul>
+				</div>
+				<div class="talkInp">
+					<img style="display: block;" src="img/tit.png" alt="">
+					<textarea class="area"></textarea>
+					<ul class="btn">
+						<li>关闭(c)</li>
+						<li class="send">
+							发送(s)
+							<p class="warning">发送内容不能为空，请重新输入</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="notice">
+
+			</div>
+		</div>
+		<div id="youji">
+			<img src="img/youji.png" style="float:left;" />
+			<ul id="rightclick">
+				<li><a>复制(C)</a></li>
+				<li class="xiahuaxian"><a>全部选择(A)</a></li>
+				<li id="duoxuan">
+					<a>显示比例</a>
+					<div id="hid">
+						<img src="img/youji1.png" style="float:left;"/>
+						<ul id="hidl">
+							<li><a>400%</a></li>
+							<li><a>200%</a></li>
+							<li><a>150</a></li>
+							<li><a>125%</a></li>
+							<li><a>100%</a></li>
+							<li><a>75%</a></li>
+							<li><a>50%</a></li>
+						</ul>
+					</div>
+				</li>
+				<li><a>使用多彩气泡</a></li>
+				<li class="xiahuaxian"><a>设置多彩气泡</a></li>
+				<li><a>清屏</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+<script>
+	var wrap = document.getElementById('wrap');
+	var youji = document.getElementById('youji');
+	var send = document.getElementsByClassName('send')[0];
+	var area = document.getElementsByClassName('area')[0];
+	var warning = document.getElementsByClassName('warning')[0];
+	var msgBox = document.getElementById('msgBox');
+	var timer;
+	// 回车发送消息
+	area.onkeydown = function(e){
+		if(e.keyCode == 13&&e.shiftKey==false){
+			send.onclick();
+			e.preventDefault();
+		}
+	}
+
+	// 点击发送按钮发送消息
+	send.onclick = function(){
+		if (area.value == '') {   //value的值就是框里面的内容
+			warning.style.display = 'block';
+			clearTimeout(timer);
+			timer = setTimeout(function(){
+				warning.style.display = 'none';
+			},1000)
+		}else{
+			var li = document.createElement('li');
+			li.className = 'clearFix';
+			li.innerHTML = '<p class="time">'+new Date().toLocaleString()+'</p><p class="content"><span class="conText">'+area.value+'</span><span class="myHead"></span></p>';
+			msgBox.appendChild(li);
+			li.scrollIntoView();
+			area.value ='';
+			area.focus();
+		}
+	}
+
+	//右击事件
+	wrap.oncontextmenu = function(e){
+		e.preventDefault();
+		youji.style.display = 'block';
+		youji.style.marginTop = e.clientY - 100 + 'px';
+		youji.style.marginLeft = e.clientX - 420 + 'px';
+		//继续点击一下就会取消
+		document.onclick = function(){
+			youji.style.display = 'none';
+		}
+	} 
+
+	//显示隐藏事件
+	var liNodes = document.getElementById("duoxuan");
+	liNodes.onmouseover = function(){
+		this.className = "subMenuShow";
+	}
+	liNodes.onmouseout = function(){
+		this.className = "";
+	}
+</script>
+</html>

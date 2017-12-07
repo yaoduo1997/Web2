@@ -8,6 +8,12 @@
 				margin: 0 auto;
 				padding: 0;
 			}
+			ul,li{
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
 			#head img{
 				width: 100%;
 				height: 120px;
@@ -111,10 +117,28 @@
 				float: right;
 				margin-right: 20px;
 			}
+			.num{
+				float: left;
+				margin-left: 520px;
+				margin-top: 25px;
+			}
+			.num li{
+				float: left;
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				margin-left: 10px;
+				color: white;
+				background-color: red;
+				border-radius: 50%;
+			}
 		</style>
 		<script type="text/javascript">
 			window.onload = function(){
-				var liNodes = document.getElementsByTagName("li");
+				//导航
+				var ul = document.getElementById("u");
+				var liNodes = ul.getElementsByTagName("li");
 				for (var i=0; i<liNodes.length; i++)
 				{
 						liNodes[i].onmouseover = function(){
@@ -124,42 +148,41 @@
 						this.className = "";
 					}
 				}
-				var end1 = document. getElementById("end1");
-			var imgNodes = document.getElementsByTagName("a");
-			var i = 0;
-			var pre = document.getElementById("pre");
-			var la = document.getElementById("la");
-			var cir = setInterval(
-				function(){
-				imgNodes[i%8].style.display = "none";
-				i++;
-				imgNodes[i%8].style.display = "block";
-			},2000);
-			end1.onmouseover = function(){
-				clearInterval(cir);
-			}
-			end1.onmouseout  = function(){
-				var cir = setInterval(
-				function(){
+				//图片轮播
+				var end1 = document.getElementById("end1");
+				var imgNodes = document.getElementsByTagName("a");
+				var i = 0;
+				var pre = document.getElementById("pre");
+				var la = document.getElementById("la");
+				var num = document.getElementsByClassName('num')[0];
+				var numList = num.children;
+				function imgTab(){
 					imgNodes[i%8].style.display = "none";
+					numList[i%8].style.backgroundColor = 'red';
 					i++;
 					imgNodes[i%8].style.display = "block";
-				},2000);
-			}
-			pre.onclick = function(){
-				imgNodes[i%8].style.display = "none";
-				if(i%8==0){
-					i = 7;
-				}else{
-					i--;
+					numList[i%8].style.backgroundColor = 'blue';
 				}
-				imgNodes[i%8].style.display = "block";
-			}
-			la.onclick = function(){
-				imgNodes[i%8].style.display = "none";
-				i++;
-				imgNodes[i%8].style.display = "block";
-			}
+				var cir = setInterval(imgTab,2000);
+				end1.onmouseover = function(){
+					clearInterval(cir);
+				}
+				end1.onmouseout  = function(){
+					cir = setInterval(imgTab,2000);
+				}
+				pre.onclick = function(){
+					imgNodes[i%8].style.display = "none";
+					if(i%8==0){
+						i = 7;
+					}else{
+						i--;
+					}
+					imgNodes[i%8].style.display = "block";
+				}
+				la.onclick = function(){
+					imgTab();
+				}
+				
 			}
 			
 		</script>
@@ -167,7 +190,7 @@
 	<body>
 		<div id="head"><img src="images/head.png"/></div>
 		<div id="box">
-			<ul>
+			<ul id="u">
 				<li>首页</li>
 				<li>学校概况
 					<ul class="c7">
@@ -233,7 +256,7 @@
 		</div>
 		<div id="end">
 			<div id="end1">
-				<a href="#"  style="display:block" ><img src="images/img0.png"/></a>
+				<a href="#" style="display:block" ><img src="images/img0.png"/></a>
 				<a href="#"><img src="images/img1.png"/></a>
 				<a href="#"><img src="images/img2.png"/></a>
 				<a href="#"><img src="images/img3.png"/></a>
@@ -242,7 +265,18 @@
 				<a href="#"><img src="images/img6.png"/></a>
 				<a href="#"><img src="images/img7.png"/></a>
 				<div id="botm">
-					<span id="pre"> < </span><span id="la"> > </span>
+					<span id="pre"> < </span>
+					<ul class="num">
+						<li style="background-color:blue;">1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+						<li>5</li>
+						<li>6</li>
+						<li>7</li>
+						<li>8</li>
+					</ul>
+					<span id="la"> > </span>
 				</div>
 			</div>
 		</div>
