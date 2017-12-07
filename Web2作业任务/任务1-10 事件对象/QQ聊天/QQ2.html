@@ -566,8 +566,8 @@
 	wrap.oncontextmenu = function(e){
 		e.preventDefault();
 		youji.style.display = 'block';
-		youji.style.marginTop = e.clientY - 70 + 'px';
-		youji.style.marginLeft = e.clientX - 350 + 'px';
+		youji.style.marginTop = e.clientY - 100 + 'px';
+		youji.style.marginLeft = e.clientX - 420 + 'px';
 		//继续点击一下就会取消
 		document.onclick = function(){
 			youji.style.display = 'none';
@@ -624,7 +624,7 @@
 
 	//划上时显示记录表情包，划过时表情包消失
 	titimg.onmouseover = function(){
-		if(zong.style.display == "none"){
+		if(zong.style.display == "none" || k==0){
 			box.style.display = "block";
 			box.style.marginTop = 295 + 'px';
 			box.style.marginLeft = -5 + 'px';
