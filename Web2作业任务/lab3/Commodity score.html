@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = "utf-8"/>
+	<title>商品评分</title>
+	<style type="text/css">
+		*{
+			margin: 0 auto;
+			padding: 0;
+		}
+		#box{
+			width: 558px;
+			height: 319px;
+			background-color: #ffffff;
+			border: 3px #d2d3d6 groove;
+			margin: 100px auto;
+			overflow: hidden;
+		}
+		#top{
+			width: 555px;
+			height: 34px;
+			line-height: 34px;
+			background-color: #f3f8fe;
+			padding-left: 22px;
+		}
+		#mid{
+			width: 555px;
+			height: 48px;
+			line-height: 48px;
+			padding-left: 22px;
+		}
+		#bottom{
+			width: 520px;
+			height: 230px; 
+		}
+		#p1{
+			width: 515px;
+			height: 196px;
+			border: 1px #d2d3d6 solid;
+		}
+		#p2{
+			width: 87px;
+			height: 26px;
+			line-height: 26px;
+			color: #808080;
+			border: 1px #d2d3d6 solid;
+			float: right;
+			margin-top: 3px;
+			margin-right: 5px;
+		}
+		#p2:hover{
+			border: 2px #d3e4f0 solid;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<!--标题部分-->
+		<div id="top">宝贝与描述相符(打分匿名)</div>
+		<!--星星部分-->
+		<div id="mid">
+			<img src="images/star0.png"/>
+			<img src="images/star0.png"/>
+			<img src="images/star0.png"/>
+			<img src="images/star0.png"/>
+			<img src="images/star0.png"/>
+		</div>
+		<!--评价内容及提交部分按钮-->
+		<div id="bottom">
+			<p id="p1"></p>
+			<p id="p2">&nbsp;公开评论&nbsp;<img src="images/sanjiao.png"></p>
+		</div>
+	</div>
+</body>
+	<script type="text/javascript">
+	window.onload = function(){
+		var Arr = ["非常差","差","一般","好","非常好"];
+		var Storestar = document.getElementById('mid');
+		var stars = Storestar.getElementsByTagName('img');
+		var p1 = document.getElementById('p1');
+		var con = "false";
+		var clic = 0;
+		//划上时相应的星星变亮
+		function starPic0(m){
+			for(var i = 0;i<m+1;i++){
+				stars[i].src = "images/star2.png";
+				p1.innerHTML = Arr[i];
+				if(con=="false"){
+					con = "false";
+				}
+			}
+		}
+		function starPic1(m){
+			for(var i=0;i<m+1;i++){
+				stars[i].src = "images/star1.png";
+				p1.innerHTML = Arr[i];
+				if(con=="true"){
+					stars[i].src = "images/star2.png";//鼠标点击过后的星星再鼠标划上时星星变亮
+				}else{
+					con = "false";
+				}
+			}
+		}
+		function starPic2(m){
+			for(var i = 0;i<m+1;i++){
+				stars[i].src = "images/star1.png";//星星变灰的样子
+			}
+		}
+		function starPic(){
+			stars[0].onmouseover = function(){
+				starPic1(0);
+			}
+			stars[1].onmouseover = function(){
+				starPic1(1);
+			}
+			stars[2].onmouseover = function(){
+				starPic0(2);
+			}
+			stars[3].onmouseover = function(){
+				starPic0(3);
+			}
+			stars[4].onmouseover = function(){
+				starPic0(4);
+			}			
+		}
+		starPic();
+		//划过时星星恢复原样
+		var hide = function(){
+			if(con=="true"){
+				//划过时鼠标点击之后的星星恢复原样
+				for(var i=clic+1;i<5;i++){
+					stars[i].src = "images/star0.png";
+				}
+				//鼠标点击之前的星星及星星的样子
+				for(var n=0;n<clic;n++){
+					if(clic<2){
+						starPic2(clic);
+					}else{
+						starPic0(n);
+					}
+				}
+				p1.innerHTML = Arr[clic];
+			}else{
+				for(var k=0;k<5;k++){
+					stars[k].src = "images/star0.png";
+					p1.innerHTML = "";
+				}
+			}
+		}
+		for(var i=0;i<5;i++)
+		{
+			stars[i].onmouseout = hide;		
+		}
+		//鼠标点击星星时的状态
+		stars[0].onclick = function(){
+			con="true";
+			hide;
+			clic = 0;
+		}
+		stars[1].onclick = function(){
+			con="true";
+			hide;
+			clic = 1;
+		}
+		stars[2].onclick = function(){
+			con="true";
+			hide;
+			clic = 2;
+		}
+		stars[3].onclick = function(){
+			con="true";
+			hide;
+			clic = 3;
+		}
+		stars[4].onclick = function(){
+			con="true";
+			hide;
+			clic = 4;
+		}
+	}
+	</script>
+</html>
+<!--
+总结本次实验所用到的知识点和遇到的问题，并思考解决的方法，以及从中学习
+到的经验。
+1.知识点：
+	先构思页面整体框架然后构思每个部分的内容，然后再写代码。
+	最后编写各部分的功能。
+	用到的知识点有关页面布局，JS中的获取标签及内容的用法，还用到了一些循环
+2.遇到的问题：不知道怎么获得鼠标划上的元素如何获取,img集合中的元素如何通过循环来实现单个img的功能。
+3.经验：大脑需要经过构思之后写起来更快，有构思之后再敲代码调试功能是否实现了，没有实现就去找问题所在。
+-->
